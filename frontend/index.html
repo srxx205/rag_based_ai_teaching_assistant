@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>RAG Based AI Teaching Assistant</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <!-- Header -->
+        <header>
+            <div class="logo">
+                <i class="fas fa-laptop-code"></i>
+                <h1>AI Teaching Assistant</h1>
+            </div>
+            <p class="tagline"></p>
+        </header>
+
+        <!-- Main Content -->
+        <div class="main-content">
+            <!-- Chat Section -->
+            <div class="chat-section">
+                <div class="chat-header">
+                    <i class="fas fa-robot"></i>
+                    <h2>Ask About the video</video></h2>
+                </div>
+                
+                <div class="chat-messages" id="chatMessages">
+                    <div class="welcome-message">
+                        <i class="fas fa-graduation-cap"></i>
+                        <p>Hello! I'm your AI assistant . Ask me anything about the topics covered in the uploaded video!</p>
+                       
+                    </div>
+                </div>
+                
+                <div class="chat-input-area">
+                    <textarea id="questionInput" placeholder="Type your question here..." rows="3"></textarea>
+                    <button id="askButton" onclick="askQuestion()">
+                        <i class="fas fa-paper-plane"></i> Ask
+                    </button>
+                </div>
+            </div>
+
+            <!-- Sidebar -->
+            <div class="sidebar">
+                <!-- Status Card -->
+                <div class="card status-card">
+                    <h3><i class="fas fa-info-circle"></i> System Status</h3>
+                    <div class="status-item">
+                        <span>Index Status:</span>
+                        <span id="indexStatus" class="badge">Loading...</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Chunks Loaded:</span>
+                        <span id="chunksCount">0</span>
+                    </div>
+                    <div class="status-item">
+                        <span>Model:</span>
+                        <span id="modelName">deepseek-r1:1.5b</span>
+                    </div>
+                </div>
+
+                <!-- Upload Card -->
+                <div class="card upload-card">
+                    <h3><i class="fas fa-upload"></i> Add Course Video</h3>
+                    <form id="uploadForm">
+                        <input type="text" id="videoNumber" placeholder="Video Number (e.g., 1)" required>
+                        <input type="text" id="videoTitle" placeholder="Video Title" required>
+                        <input type="file" id="videoFile" accept=".mp4,.avi,.mov,.mkv" required>
+                        <button type="submit">
+                            <i class="fas fa-cloud-upload-alt"></i> Upload & Process
+                        </button>
+                    </form>
+                    <div id="uploadProgress" class="progress-bar" style="display:none">
+                        <div class="progress-fill"></div>
+                    </div>
+                </div>
+
+                <!-- Quick Questions -->
+                <div class="card quick-questions">
+                    <h3><i class="fas fa-bolt"></i> Quick Questions</h3>
+                    <div class="question-buttons">
+                        <button onclick="askQuickQuestion('How to install VS Code?')">
+                            VS Code Installation
+                        </button>
+                        <button onclick="askQuickQuestion('What is HTML?')">
+                            What is HTML?
+                        </button>
+                        <button onclick="askQuickQuestion('How to add CSS to HTML?')">
+                            Add CSS to HTML
+                        </button>
+                        <button onclick="askQuickQuestion('What are JavaScript variables?')">
+                            JavaScript Variables
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
